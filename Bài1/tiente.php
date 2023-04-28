@@ -8,17 +8,19 @@
             float: left;
     }
 </style>
-    <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+<?php
+    $ketqua = "";
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $sotien = $_POST['sotien'];
     $donvi = $_POST['donvi'];
-    $ketqua = 0;
     if($donvi == 'USD'){
-        echo $ketqua = $sotien * 23000 ." ".'VNĐ';
+         $ketqua = $sotien * 23000 .' VNĐ';
     }else if($donvi == 'VNĐ'){
-        echo $ketqua = $sotien / 23000 ." ".'USD';
+        $ketqua = $sotien / 23000 .' USD';
+    
     }
-}
+    }
 ?>
 
 <form action="" method='POST' class='cuong'>
@@ -27,8 +29,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
      <select name="donvi" id="">
         <option value="VNĐ">Chuyển Từ VNĐ sang USD</option>
-        <option value="USD ">Chuyển Từ USD sang VNĐ</option>
+        <option value="USD">Chuyển Từ USD sang VNĐ</option>
      </select>
      <input type="submit" value="change">
-     
+     <?php echo $ketqua;?>
+
 </form>
